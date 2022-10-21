@@ -32,6 +32,7 @@ function add(event){
 
 function errorUrl(){
     this.src = "https://get.wallhere.com/photo/1920x1440-px-British-cat-shorthair-1912001.jpg";
+    pop.value ="";
 }
 
 

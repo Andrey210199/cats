@@ -6,7 +6,7 @@ export function addCat(data){
         {
             case "submit":break;
             case "checkbox": formData[elem.name] = elem.checked; break;
-            default: formData[elem.name] = elem.value; break;
+            default: elem.type==="url" && elem.value ===""? formData[elem.name] ="http://www.ooorenome.ru/images/noimg.jpg": formData[elem.name] = elem.value; break;
         }
     });
     return formData;
