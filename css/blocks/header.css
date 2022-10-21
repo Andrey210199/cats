@@ -1,0 +1,9 @@
+.header__link{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header__img{
+    width: 30px;
+}

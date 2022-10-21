@@ -8,6 +8,9 @@ import * as AddCat from "./popup/addCat.js";
 const cats = Cats.cats;
 const addcat = new Popup.Popup("popup-add-cat");
 const addCatBtn = document.querySelector(".header__btn");
+const popupAddCat = document.querySelector("#form__add-cat");
+const pop = document.querySelector("[name=img_link]");
+const img = document.querySelector(".form__img");
 
 
 //Вызовы функций
@@ -27,6 +30,21 @@ function add(event){
     addcat.closePopup();
 }
 
+function errorUrl(){
+    this.src = "https://get.wallhere.com/photo/1920x1440-px-British-cat-shorthair-1912001.jpg";
+}
+
 
 addCatBtn.addEventListener("click", (evt)=>{addcat.openPopup()});
-document.querySelector("#form__add-cat").addEventListener("submit", add);
+popupAddCat.addEventListener("submit", add);
+
+pop.addEventListener("blur", (e)=>{
+    
+    if(pop.value !=="")
+    {
+    img.onerror = errorUrl;
+    img.src = e.target.value;
+    }
+    
+});
+

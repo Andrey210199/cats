@@ -20,20 +20,6 @@
     gap: 10px;
 }
 
-.form__div{
-    display: flex;
-    flex-direction: column;
-    gap: 10px
-}
-
-.btn-close{
-    align-self: start;
-}
-
-.input__form{
-    height: 20px;
-}
-
 .form__container{
     display: flex;
     flex-direction: column;
@@ -44,31 +30,4 @@
 .popup-add-cat__form-img{
     display: flex;
     flex-direction: column;
-}
-
-.form__img{
-    flex: 1;
-}
-
-.form__textarea{
-    height: 100%;
-}
-
-.form__label{
-    position: relative;
-}
-.form__checkbox{
-    position: absolute;
-    appearance: none;
-
-}
-
-.form__checkbox:hover~.form__fake-checkbox,
-.form__checkbox:hover~.form__label {
-    color: var(--color-link-hover);
-}
-
-.form__checkbox:checked~.form__fake-checkbox,
-.form__checkbox:checked~.form__label {
-    color: var(--color-blue);
 }

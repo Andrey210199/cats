@@ -1,8 +1,8 @@
 export class Card{
     constructor(data,parent,template, selector){
         this._data = data;
-        this._img = data.img_link;
-        this._name = data.name;
+        this._img = this._data.img_link;
+        this._name = this._data.name;
         this._parent = document.querySelector(`.${parent}`);
         this._template = template;
         this._selector = selector;
@@ -16,7 +16,6 @@ export class Card{
         this._card = this._getTemplate().cloneNode(true);
         this._card.querySelector("[class*=img]").src = this._img;
         this._card.querySelector("[class*=name").textContent = this._name;
-
         if(!this._data.favourite)
         {
             this._like = this._card.querySelector("[class*=btn]");
