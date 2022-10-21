@@ -1,0 +1,14 @@
+.btn{
+    padding: 0.5em;
+    background-color: var(--color-layt-green);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.btn:hover{
+    background-color: var(--color-btn-hover);
+}
+
+.btn:active{
+    background-color: var(--color-btn-active);
+}

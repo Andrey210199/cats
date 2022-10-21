@@ -1,0 +1,17 @@
+.popup{
+    display: none;
+    z-index: var(--popup-z);
+}
+
+.popup_active{
+    display: flex;
+    position: absolute;
+}
+
+.popup__header{
+    display: grid;
+    grid-template-columns: 1fr 5%;
+    text-align:  center;
+    justify-content: center;
+    
+}

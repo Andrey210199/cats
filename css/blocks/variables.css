@@ -1,0 +1,20 @@
+:root{
+    --color-blue: #035aa6cc;
+    --color-green: #3E5922;
+    --color-layt-green:#AABF0A;
+    --text-color: #BF9B7A;
+    --color-red: #A60808;
+
+    --color-btn-active: #d7ee26;
+    --color-btn-hover: #798612;
+
+    --color-link-hover: #FA6B35;
+    --color-link-aktive: #ACDE2F;
+
+    --like-color: #FA3D47;
+    --like-hover: #c72129;
+    --like-active: #35080a;
+
+    --z-index-card: 1;
+    --popup-z: 2;
+}

@@ -4,10 +4,100 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Котики</title>
+    <link rel="stylesheet" href="./css/index.css">
 </head>
-<body>
+
+<body class="body">
+
+    <header class="header">
+        <section class="content header__content space_content color">
+            <a href="#" class="link header__link">Милые котики</a>
+            <button class="btn header__btn">+</button>
+
+        </section>
+
+    </header>
+
+    <main class="main">
+
+        <section class="content main__content">
+        <div class="cards content__cards">
+        </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <section class="content footer__content space_content color">
+        <span class="text footer__text">©2022</span>
+        <div class="footer__links">
+        <a href="#" class="link footer__link">github</a>
+        <a href="#" class="link footer__link">telegram</a>
+        <a href="#" class ="link footer__link">VK</a>
+        </div>
+        </section>
+
+    </footer>
+
+    <template id="card__template">
+
+            <div class="card content__card">
+                <img src="#" class="card__img" alt="Фото кота">
+                <div class="card__elem">
+                <a href="#" class="link card__link"><h3 class="card__name"></h3></a>
+                <button class="card__btn">♥</button>
+            </div>
+
+        </div>
+    </template>
+
+        <section class="popup popup-add-cat">
+            <div class="content popup-add-cat__content">
+            <div class="popup__header">
+            <h2>Добавить питомца</h2>
+            <button class="btn btn-close">x</button>
+            
+            </div>
+                
+            <form class="form popup-add-cat__form" id="form__add-cat">
+                <div class="popup-add-cat__form-img form__div">
+                <img src="#" class="img form__img" alt="Фото кота">
+                <input type="url" class="input input__form" name="img__link" placeholder="Ссылка на фото">
+                </div>
     
+                <div class="form__div">
+                <div class="form__container">
+                <input type="number" class="input input__form" min="0" name="id" placeholder="id" required>
+                <input type="text" class="input input__form" name="name" placeholder="Имя кота"  required>
+                </div>
+                
+                <textarea class="input form__textarea" name="description" placeholder="Описание"></textarea>
+                </div>
+
+                <div class="form__div">
+
+                <div class="form__container">
+                <input type="number" class="input input__form" min="0" name="age" placeholder="Возраст">
+                <input type="number" class="input input__form" min="0" max="10" placeholder="Рейтинг (0-10)" name="rate">
+                </div>
+                
+                <div class="form__container">
+                <label class="label form__label-content">
+                    <input type="checkbox" name="favorite" class="form__checkbox">
+                    <span class="span form__label">Любимчик</span>
+                    <span class="span form__fake-checkbox">√</span>
+                </label>
+                    
+                <button class="btn form__submit" type="submit">Добавить котика</button>
+                </div>
+
+            </div>
+            </form>
+        </div>
+        </section>
     
+    <script type="module" src="./script/index.js" defer></script>
 </body>
 </html>
