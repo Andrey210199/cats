@@ -47,3 +47,11 @@
 .link:active{
     color: var(--color-link-aktive);
 }
+
+.btn_hidden{
+    display: none;
+}
+
+.btn_active{
+    display: block;
+}

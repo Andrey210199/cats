@@ -6,6 +6,7 @@
 .popup_active{
     display: flex;
     position: absolute;
+    animation: openPopup 1s ease-in;
 }
 
 .popup__header{

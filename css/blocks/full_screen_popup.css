@@ -1,0 +1,14 @@
+.popup-full-scrin{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-blue);
+    backdrop-filter: blur(5px);
+}
+
+.popup-full-scrin__content{
+    background-color: var(--color-red);
+    padding: 10px;
+    
+}

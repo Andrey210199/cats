@@ -1,14 +1,19 @@
-.popup-add-cat__content{
+.popup-update-cat__content{
     max-width: 600px; 
 }
 
-.popup-add-cat__form{
+.popup-update__form{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 10px;
 }
 
-.popup-add-cat__form-img{
+.popup-update__form-img{
     display: flex;
     flex-direction: column;
+}
+
+.no-event{
+    pointer-events: none;
+    background-color: var(--color-gray);
 }

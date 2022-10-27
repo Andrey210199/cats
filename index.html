@@ -14,7 +14,10 @@
         <section class="content header__content space_content color">
             <a href="#" class="link header__link"><img class="header__img" src="https://pngimg.com/uploads/paw/paw_PNG3.png">
             Милые котики</a>
-            <button class="btn header__btn">+</button>
+        <div class="header__content">
+            <button class="btn header__btn btn_hidden">+</button>
+            <button class="btn header__login">Войти</button>
+         </div>
 
         </section>
 
@@ -46,16 +49,64 @@
 
             <div class="card content__card">
                 <img src="#" class="card__img" alt="Фото кота">
-                <div class="card__elem">
-                <a href="#" class="link card__link"><h3 class="card__name"></h3></a>
-                <button class="card__btn">♥</button>
+                <div class="card__elem hover">
+                <a href="#" class="link card__link hover"><h3 class="card__name"></h3></a>
+                
+            </div>
+            <button class="card__btn">♥</button>
+            </div>
+    </template>
+
+   <!--  Форма обновления кота -->
+    <section class="popup popup-full-scrin popup-update-cat">
+        <div class="content popup-full-scrin__content popup-update-cat__content">
+        <div class="popup__header">
+        <h2>Питомец</h2>
+        <button class="btn btn-close">x</button>
+        
+        </div>
+            
+        <form class="form popup-update__form" id="form__update">
+            <div class="popup-update__form-img form__div">
+            <img src="" class="img form__img" alt="Фото кота">
+            <input type="url" class="input no-event input__form" name="img_link" placeholder="Ссылка на фото">
+            </div>
+
+            <div class="form__div">
+            <div class="form__container">
+           <span class="id"></span>
+            <input type="text" class="input no-event input__form" name="name" placeholder="Имя кота"  required>
+            </div>
+            
+            <textarea class="input no-event form__textarea" name="description" placeholder="Описание"></textarea>
+            </div>
+
+            <div class="form__div">
+
+            <div class="form__container">
+            <input type="number" class="input no-event input__form" min="0" name="age" placeholder="Возраст">
+            <input type="number" class="input no-event input__form" min="0" max="10" placeholder="Рейтинг (0-10)" name="rate">
+            </div>
+            
+            <div class="form__container">
+            <label class="label no-event form__label-content">
+                <input type="checkbox" name="favourite" class="form__checkbox">
+                <span class="span form__label">Любимчик</span>
+                <span class="span form__fake-checkbox">√</span>
+            </label>
+            <button class="btn form__update-cat btn_hidden" id="update">Редактировать</button>
+            <button class="btn form__submit btn_hidden" type="submit">Обновить</button>
+            <button class="btn form__delete-cat btn_hidden" type="submit">Удалить</button>
             </div>
 
         </div>
-    </template>
+        </form>
+    </div>
+    </section>
 
-        <section class="popup popup-add-cat">
-            <div class="content popup-add-cat__content">
+        <!--Форма добавления котика-->
+        <section class="popup popup-full-scrin popup-add-cat">
+            <div class="content popup-full-scrin__content popup-add-cat__content">
             <div class="popup__header">
             <h2>Добавить питомца</h2>
             <button class="btn btn-close">x</button>
@@ -92,6 +143,32 @@
                 </label>
                     
                 <button class="btn form__submit" type="submit">Добавить котика</button>
+                </div>
+
+            </div>
+            </form>
+        </div>
+        </section>
+
+        <!--Форма авторизации-->
+        <section class="popup popup-full-scrin popup-login">
+            <div class="content popup-full-scrin__content popup-login__content">
+            <div class="popup__header">
+            <h2>Форма авторизации</h2>
+            <button class="btn btn-close">x</button>
+            
+            </div>
+                
+            <form class="form popup-login__form" id="form__login">
+                <div class="form__div">
+
+                <div class="form__container">
+                <input type="email" class="input input__form" name="email" placeholder="Имейл" required>
+                <input type="password" class="input input__form" min="0" max="10" placeholder="Пороль" name="password" required>
+                </div>
+
+                    
+                <button class="btn form__submit" type="submit" id="login">Войти</button>
                 </div>
 
             </div>
