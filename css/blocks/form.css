@@ -60,6 +60,11 @@
     color: var(--color-blue);
 }
 
-/* input[name="id"]{
+.form__id{
+    display: flex;
     pointer-events: none;
-} */
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    align-items: center;
+}
