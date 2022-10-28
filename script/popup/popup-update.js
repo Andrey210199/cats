@@ -3,12 +3,13 @@ import * as Constant from "../constant.js";
 import * as AddCat from "./addCat.js";
 import * as Card from "../card.js";
 import { updateLocalS } from "../local-storage.js";
+import { Api } from "./../api.js";
 
 export class UpdatePopup extends Popup{
-    constructor(selector, photo, formId, api){
+    constructor(selector, photo, formId){
         super(selector, photo);
 
-        this._api = api;
+        this._api =  new Api(Constant.CONFIG_API);;
         this._formId = this._popup.querySelector(`#${formId}`);
         this._input =this._popup.querySelector("input");
         this._id =this._formId.querySelector(".id");
@@ -37,14 +38,25 @@ export class UpdatePopup extends Popup{
         }
     }
 
+    _isDisabled(elem){
+        if(!elem.hasAttribute("disabled"))
+        {
+            elem.setAttribute("disabled","");
+        }
+        else{
+            elem.removeAttribute("disabled");
+        }
+    }
     _editElem=()=>{
         this._element.forEach(elem=>{ 
             if(elem.type ==="checkbox"){
                 elem.parentNode.classList.toggle("no-event");
+               this._isDisabled(elem);
             }
             else if(elem.type !=="submit")
             {
                 elem.classList.toggle("no-event");
+                this._isDisabled(elem);
             }
 
             });
@@ -57,10 +69,10 @@ export class UpdatePopup extends Popup{
         this._api.updateCatById(this._data.id,this._data)
         .then(()=>{
             this._card = new Card.Card(this._data,"cards","card__template", "card");
+            updateLocalS(this._data, "update");
             this._card.updateCard();
             this.closePopup();
         });
-        updateLocalS(this._data, "update");
     }
 
     _deleteCard=()=>{
@@ -68,10 +80,10 @@ export class UpdatePopup extends Popup{
         this._api.deleteCatById(this._elemId)
         .then(()=>{
          this._card = document.querySelector(".cards").querySelector(`[id="${this._elemId}"]`)
+         updateLocalS(this._elemId, "delete");
          this._card.remove();
          this.closePopup();
         });
-        updateLocalS(this._elemId, "delete");
     }
 
     openPopup(){

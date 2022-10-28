@@ -1,20 +1,19 @@
 //Импорт файлов
-import * as Cats from "./cats.js";
-import * as Card from "./card.js";
 import * as Popup from "./popup/popup.js";
 import * as AddCat from "./popup/addCat.js";
 import * as Constant from "./constant.js";
 import * as UpdatePopup from "./popup/popup-update.js";
+import { PopupAddCat } from "./popup/popup-add.js";
 import { Api } from "./api.js";
 import { getCookie } from "./Cookie.js";
-import { updateLocalS } from "./local-storage.js";
+import { Authorized } from "./authorized.js";
+import { checkLStor } from "./local-storage.js";
 
 //Переменные
-const cats = Cats.cats;
 const api = new Api(Constant.CONFIG_API);
-const addcat = new Popup.Popup("popup-add-cat", Constant.DEFAULTPHOTO);
+const addcat = new PopupAddCat("popup-add-cat", Constant.DEFAULTPHOTO,"form__add-cat");
 const popupLogin = new Popup.Popup("popup-login", Constant.DEFAULTPHOTO);
-const popupUpdateCat = new UpdatePopup.UpdatePopup("popup-update-cat", Constant.DEFAULTPHOTO, "form__update", api);
+const popupUpdateCat = new UpdatePopup.UpdatePopup("popup-update-cat", Constant.DEFAULTPHOTO, "form__update");
 
 
 const loginBtn = document.querySelector(".header__login");
@@ -33,28 +32,11 @@ const link = "card__name";
 
 
 //Вызовы функций
-function createCard(data){
-    const card = new Card.Card(data,"cards","card__template", "card");
-    card.createCard();
-}
-
-function add(event){
-    event.preventDefault();
-    const formArr = [...popupAddCat.elements];
-    const dataFromForm =AddCat.addCat(formArr,Constant.NOPHOTO)
-    api.addCat(dataFromForm)
-    .then(()=>{
-        createCard(dataFromForm);
-        addcat.closePopup();
-        popupAddCat.reset();
-    });
-}
-
 loginBtn.addEventListener("click", (evt)=>{
     if(isAuth)
     {   document.cookie= `email= ${getCookie().email}; max-age=-1`;
         isAuth = undefined;
-        Authorized();
+        Authorized(loginBtn);
     }
     else{
         popupLogin.openPopup();
@@ -69,16 +51,17 @@ loginForm.addEventListener("submit",(event)=>{
      elements.forEach((elem)=>{
         if(elem.type=="email")
         {
-           document.cookie = `${elem.type}=${elem.value}; max-age=3000`
+           document.cookie = `${elem.type}=${elem.value}; max-age=3000`;
+           
         }     
      });
      isAuth = getCookie().email;
-     Authorized();
+     Authorized(loginBtn);
      popupLogin.closePopup();
      
     });
 
-popupAddCat.addEventListener("submit", add);
+
 
 updateId.addEventListener("submit",(event)=> event.preventDefault())
 
@@ -98,66 +81,11 @@ cards.addEventListener("click", (evt)=>{
     }
 });
 
-function showHiddenElem(elems, hiddenClass, activeClass){
-    elems.forEach((elem)=>{
-     elem.classList.toggle(hiddenClass);
-     elem.classList.toggle(activeClass);
-    });
-}
 
-function Authorized()
-{
-    const hidden = Constant.SHOWCLASS.hiddenClass;
-    const active = Constant.SHOWCLASS.activeClass;
-
-if(isAuth){
-   const hiddenElements = document.querySelectorAll(`.${Constant.SHOWCLASS.hiddenClass}`);
-   loginBtn.textContent="Выйти";
-    showHiddenElem(hiddenElements, hidden, active);
-
-}
-else{
-    const showElements = document.querySelectorAll(`.${Constant.SHOWCLASS.activeClass}`);
-    loginBtn.textContent ="Войти";
-    showHiddenElem(showElements, hidden, active);
-}
-
-}
 checkLStor();
-Authorized();
+Authorized(loginBtn);
 
-function refTime(localSTimeLife){
-   return (new Date() < new Date(localSTimeLife));
-}
-
-function getAllCAts(){
-    api.getAllCAtsOrCatById()
-    .then(({data})=>{
-        data.forEach((cat)=>{
-            createCard(cat);
-        });
-        updateLocalS(data,"all")
-    });
-}
-
-function checkLStor(){
-    if(localStorage.length)
-    {
-    const localData =JSON.parse(localStorage.getItem("cats"));
-    const localSTimeLife =localStorage.getItem("catsTime");
-    const relTime =refTime(localSTimeLife);
-
-    if(localData && localData.length && relTime)
-    {
-        localData.forEach(elem =>{createCard(elem)})
-    }
-    else
-    {
-        getAllCAts();
-    }
-}
-else{
-    getAllCAts();
-}
-}
-
+/* api.getAllId()
+.then(({data})=>{
+    console.log(data[data.length-1]+1);
+}) */

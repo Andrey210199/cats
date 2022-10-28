@@ -29,13 +29,21 @@
     object-fit: cover;
 }
 
+.scrollBox{
+    overflow: auto;
+    height: 100%;
+}
+
 .form__textarea{
     height: 100%;
+    resize: none;
+    font: inherit;
 }
 
 .form__label{
     position: relative;
 }
+
 .form__checkbox{
     position: absolute;
     appearance: none;

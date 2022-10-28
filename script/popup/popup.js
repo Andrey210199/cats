@@ -56,7 +56,6 @@ export class Popup{
             if(event.target ===btn || event.target === this._popup)
             {
                 this.closePopup();
-
             }
         })
     }

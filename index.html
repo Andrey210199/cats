@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Котики</title>
     <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script>
 </head>
 
 <body class="body">
@@ -69,28 +70,31 @@
         <form class="form popup-update__form" id="form__update">
             <div class="popup-update__form-img form__div">
             <img src="" class="img form__img" alt="Фото кота">
-            <input type="url" class="input no-event input__form" name="img_link" placeholder="Ссылка на фото">
+            <input type="url" class="input no-event input__form" name="img_link" placeholder="Ссылка на фото" disabled>
             </div>
 
             <div class="form__div">
             <div class="form__container">
-           <span class="id"></span>
-            <input type="text" class="input no-event input__form" name="name" placeholder="Имя кота"  required>
+           <span class="form__text">id: <span class="id"></span></span>
+           <label class="form__text">Имя:</label>
+            <input type="text" class="input no-event input__form" name="name" placeholder="Имя кота" disabled required>
             </div>
-            
-            <textarea class="input no-event form__textarea" name="description" placeholder="Описание"></textarea>
+            <label class="form__text">Описание:</label>
+            <textarea class="input no-event form__textarea" name="description" placeholder="Описание" disabled></textarea>
             </div>
 
             <div class="form__div">
 
             <div class="form__container">
-            <input type="number" class="input no-event input__form" min="0" name="age" placeholder="Возраст">
-            <input type="number" class="input no-event input__form" min="0" max="10" placeholder="Рейтинг (0-10)" name="rate">
+            <label class="form__text">Возраст:</label>
+            <input type="number" class="input no-event input__form" min="0" name="age" placeholder="Возраст" disabled>
+            <label class="form__text">Рейтинг:</label>
+            <input type="number" class="input no-event input__form" min="0" max="10" placeholder="Рейтинг (0-10)" name="rate" disabled>
             </div>
             
             <div class="form__container">
             <label class="label no-event form__label-content">
-                <input type="checkbox" name="favourite" class="form__checkbox">
+                <input type="checkbox" name="favourite" class="form__checkbox" disabled>
                 <span class="span form__label">Любимчик</span>
                 <span class="span form__fake-checkbox">√</span>
             </label>
