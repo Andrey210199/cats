@@ -8,4 +8,6 @@ export const DEFAULTPHOTO ="https://get.wallhere.com/photo/1920x1440-px-British-
 
 export const SHOWCLASS ={hiddenClass: "btn_hidden", activeClass: "btn_active"};
 
+export const BLOCKCLASS ={blockClass: "btn_block", noBlockClass: "btn_noBlock"}
+
 export const STORAGELIFEMINUTES = 30;

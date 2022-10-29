@@ -55,3 +55,11 @@
 .btn_active{
     display: block;
 }
+
+.btn_block{
+    pointer-events: none;
+}
+
+.btn_noBlock{
+    pointer-events: auto;
+}

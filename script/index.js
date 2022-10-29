@@ -42,7 +42,6 @@ function updatePopupOpen(data, id,evt){
     elem.favourite = evt.target.classList.contains(falseLike);
     api.updateCatById(id,elem)
     .then(()=>{
-        console.log(elem);
         updateLocalS(elem,"update");
         evt.target.classList.toggle(falseLike);
     });
