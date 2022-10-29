@@ -40,8 +40,7 @@ export function updateLocalS(data, action){
                 localStorage.setItem("cats",JSON.stringify(lData));
             return;
         case "update":
-            const nDatas = lData.filter(elem => elem.id!==data.id);
-            nDatas.push(data);
+            const nDatas = lData.map(elem => Number(elem.id)===Number(data.id)? data: elem);
             localStorage.setItem("cats", JSON.stringify(nDatas));
             return;
         case "delete":

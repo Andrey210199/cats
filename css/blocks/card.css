@@ -49,6 +49,11 @@
     color: var(--like-active);
 }
 
+.card__btn_false{
+    color: #35080a4d;
+    text-shadow: #fff 1px 1px 0, #333 -1px -1px 0;;
+}
+
 .card__name{
     margin: 0;
 }

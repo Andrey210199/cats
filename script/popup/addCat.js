@@ -5,7 +5,6 @@ export function addCat(data, noPhoto){
         {
             case "submit":break;
             case "checkbox": formData[elem.name] = elem.checked; break;
-            case "id": 
             default: elem.type==="url" && elem.value ===""? formData[elem.name] = noPhoto: formData[elem.name] = elem.value; break;
         }
     });

@@ -69,6 +69,7 @@ export class UpdatePopup extends Popup{
         this._api.updateCatById(this._data.id,this._data)
         .then(()=>{
             this._card = new Card.Card(this._data,"cards","card__template", "card");
+            console.log(this._data)
             updateLocalS(this._data, "update");
             this._card.updateCard();
             this.closePopup();
@@ -88,7 +89,6 @@ export class UpdatePopup extends Popup{
 
     openPopup(){
         super.openPopup();
-
         this._updateBtnEdit.addEventListener("click", this._editElem);
         this._updateBtnUpdate.addEventListener("click", this._updateCard);
         this._updateBtnDelete.addEventListener("click",this._deleteCard);

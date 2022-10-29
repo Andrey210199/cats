@@ -6,7 +6,7 @@ import { PopupAddCat } from "./popup/popup-add.js";
 import { Api } from "./api.js";
 import { getCookie } from "./Cookie.js";
 import { Authorized } from "./authorized.js";
-import { checkLStor } from "./local-storage.js";
+import { checkLStor, updateLocalS } from "./local-storage.js";
 
 //Переменные
 const api = new Api(Constant.CONFIG_API);
@@ -26,15 +26,50 @@ const updateId = updatePopupClass.querySelector("#form__update");
 
 let isAuth = getCookie().email;
 const link = "card__name";
+const like ="card__btn";
+const falseLike ="card__btn_false"
 
 
 
 //Вызовы функций
-function updatePopupOpen(data, updateId){
+function updatePopupOpen(data, id,evt){
     UpdatePopup.showData(data,updateId);
     popupUpdateCat.openPopup();
     popupUpdateCat.blur();
 }
+
+ function likeToggle(elem, id, evt){
+    elem.favourite = evt.target.classList.contains(falseLike);
+    api.updateCatById(id,elem)
+    .then(()=>{
+        console.log(elem);
+        updateLocalS(elem,"update");
+        evt.target.classList.toggle(falseLike);
+    });
+}
+
+function updatePopupCheck(evt, functions){
+    let localBoolean =false;
+    const id =evt.target.closest("[id]").id;
+    const localS = JSON.parse(localStorage.getItem("cats"));
+    localS.forEach((elem)=>{
+        
+        if(elem.id === Number(id))
+        {
+           localBoolean =true;
+           functions(elem, id, evt);  
+        }
+    });
+
+    if(!localBoolean)
+    {
+        api.getAllCAtsOrCatById(id)
+        .then(({data})=>{
+            functions(data, id, evt)
+        })
+    }
+}
+
 loginBtn.addEventListener("click", (evt)=>{
     if(isAuth)
     {   document.cookie= `email= ${getCookie().email}; max-age=-1`;
@@ -78,29 +113,14 @@ updateId.addEventListener("submit",(event)=> event.preventDefault())
 
 
 cards.addEventListener("click", (evt)=>{
-
     if(evt.target.className === link)
     {
-        let localBoolean =false;
-        const id =evt.target.closest("[id]").id;
-        const localS = JSON.parse(localStorage.getItem("cats"));
-        localS.forEach((elem)=>{
-            
-            if(elem.id === Number(id))
-            {
-               localBoolean =true;
-               updatePopupOpen(elem, updateId);  
-            }
-        });
-
-        if(!localBoolean)
-        {
-            api.getAllCAtsOrCatById(id)
-            .then(({data})=>{
-                updatePopupOpen(data, updateId)
-            })
-        }
-
+        updatePopupCheck(evt, updatePopupOpen);
+    }
+    else if(evt.target.classList.contains(like))
+    {
+        updatePopupCheck(evt, likeToggle)
+          
     }
 });
 

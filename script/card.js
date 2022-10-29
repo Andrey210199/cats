@@ -21,8 +21,11 @@ export class Card{
         this._card.id = this._id;
         if(!this._data.favourite && this._btn!==null)
         {
-            this._like = this._btn;
-            this._like.remove();
+            this._btn.classList.add("card__btn_false");
+        }
+        else if(this._data.favourite && this._btn!==null)
+        {
+            this._btn.classList.remove("card__btn_false");
         }
     }
 
