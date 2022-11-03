@@ -46,6 +46,8 @@ export class Popup{
 
     closePopup(){
         this._popup.classList.remove("popup_active");
+        this._popup.classList.add("popup_hidden");
+        setTimeout(()=>{this._popup.classList.remove("popup_hidden")},400);
        document.removeEventListener("keyup",this._escPopupClose);
        document.removeEventListener("blur", this.blur);
     }

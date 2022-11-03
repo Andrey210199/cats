@@ -1,6 +1,6 @@
 .popup-full-scrin{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     justify-content: center;
     align-items: center;
     background-color: var(--color-blue);

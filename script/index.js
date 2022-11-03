@@ -126,4 +126,3 @@ cards.addEventListener("click", (evt)=>{
 
 checkLStor();
 Authorized(loginBtn);
-
