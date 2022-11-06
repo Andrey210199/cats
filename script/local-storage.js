@@ -1,11 +1,13 @@
-import {LOCALSTORAGE} from "./constant.js";
+import * as Constant from "./constant.js";
 import { Api } from "./api.js";
 import { createCard } from "./utilites.js";
 
 //Константы
-const {elements, life, lifeTime} = LOCALSTORAGE
+const {elements, life, lifeTime} = Constant.LOCALSTORAGE;
+const {CONFIG_API} =Constant;
 
-const api = new Api(Constant.CONFIG_API);
+
+const api = new Api(CONFIG_API);
 
 export function checkLStor(){
     if(localStorage.length)

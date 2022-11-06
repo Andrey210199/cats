@@ -17,14 +17,15 @@ if(isAuth){
 }
 else{
 
-    ToggleClass(loginBtn, login, activeClass,noBlockClass)
+    ToggleClass(loginBtn, login, activeClass, noBlockClass)
 }
 
 }
 
-function ToggleClass(loginBtn, BtnText, clas, blockClass){
+function ToggleClass(loginBtn, BtnText, clas, blockClas){
     const Elements = document.querySelectorAll(`.${clas}`);
-    const BlockEllements = document.querySelectorAll(`.${blockClass}`);
+    const BlockEllements = document.querySelectorAll(`.${blockClas}`);
+    console.log(BlockEllements)
     loginBtn.textContent =BtnText;
     showHiddenElem(Elements, hiddenClass, activeClass);
     showHiddenElem(BlockEllements, blockClass, noBlockClass);
