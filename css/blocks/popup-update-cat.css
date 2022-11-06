@@ -1,18 +1,3 @@
-.popup-update-cat__content{
-    max-width: 600px; 
-}
-
-.popup-update__form{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
-    gap: 10px;
-}
-
-.popup-update__form-img{
-    display: flex;
-    flex-direction: column;
-}
-
 .no-event{
     color: black;
     background-color: var(--color-gray);

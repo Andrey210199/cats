@@ -11,7 +11,7 @@
 
 @import url(./blocks/popup.css);
 @import url(./blocks/full_screen_popup.css);
-@import url(./blocks/popup_add_cat.css);
+@import url(./blocks/popup_cat.css);
 @import url(./blocks/popup-update-cat.css);
 
 @import url(./variables.css);

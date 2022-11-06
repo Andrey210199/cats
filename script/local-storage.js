@@ -1,14 +1,17 @@
-import * as Constant from "./constant.js";
+import {LOCALSTORAGE} from "./constant.js";
 import { Api } from "./api.js";
 import { createCard } from "./utilites.js";
+
+//Константы
+const {elements, life, lifeTime} = LOCALSTORAGE
 
 const api = new Api(Constant.CONFIG_API);
 
 export function checkLStor(){
     if(localStorage.length)
     {
-    const localData =JSON.parse(localStorage.getItem("cats"));
-    const localSTimeLife =localStorage.getItem("catsTime");
+    const localData =JSON.parse(localStorage.getItem(elements));
+    const localSTimeLife =localStorage.getItem(life);
     const relTime =refTime(localSTimeLife);
 
     if(localData && localData.length && relTime)
@@ -27,25 +30,25 @@ else{
 
 export function updateLocalS(data, action){
 
-    const lData =localStorage.length? JSON.parse(localStorage.getItem("cats")): null;
+    const lData =localStorage.length? JSON.parse(localStorage.getItem(elements)): null;
 
 
     switch (action) {
         case "all":
-                localStorage.setItem("cats",JSON.stringify(data));
-                lStorRefrech(Constant.STORAGELIFEMINUTES);
+                localStorage.setItem(elements,JSON.stringify(data));
+                lStorRefrech(lifeTime);
             return;
         case "add":
                 lData.push(data);
-                localStorage.setItem("cats",JSON.stringify(lData));
+                localStorage.setItem(elements,JSON.stringify(lData));
             return;
         case "update":
             const nDatas = lData.map(elem => Number(elem.id)===Number(data.id)? data: elem);
-            localStorage.setItem("cats", JSON.stringify(nDatas));
+            localStorage.setItem(elements, JSON.stringify(nDatas));
             return;
         case "delete":
             const nData = lData.filter(elem => elem.id!==data);
-            localStorage.setItem("cats", JSON.stringify(nData));
+            localStorage.setItem(elements, JSON.stringify(nData));
             return;
     
         default:
@@ -57,7 +60,7 @@ export function updateLocalS(data, action){
 function lStorRefrech(minutes){
     const refDate =new Date();
     refDate.setMinutes(refDate.getMinutes()+minutes);
-    localStorage.setItem("catsTime", refDate);
+    localStorage.setItem(life, refDate);
 }
 
 function refTime(localSTimeLife){

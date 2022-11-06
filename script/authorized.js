@@ -1,31 +1,33 @@
 import * as Constant from "./constant.js";
 import { getCookie } from "./Cookie.js";
 
+//Константы
+const {hiddenClass,activeClass} = Constant.SHOWCLASS;
+const {blockClass,noBlockClass} = Constant.BLOCKCLASS;
+const {login, notlogin} = Constant.AUTHORIZEDTEXTBTN;
 
 export function Authorized(loginBtn)
 {
     let isAuth = getCookie().email;
-    const hidden = Constant.SHOWCLASS.hiddenClass;
-    const active = Constant.SHOWCLASS.activeClass;
-    const block = Constant.BLOCKCLASS.blockClass;
-    const noBlock = Constant.BLOCKCLASS.noBlockClass;
 
 if(isAuth){
-   const hiddenElements = document.querySelectorAll(`.${hidden}`);
-   const blockEllements = document.querySelectorAll(`.${block}`);
-   loginBtn.textContent="Выйти";
-    showHiddenElem(hiddenElements, hidden, active);
-    showHiddenElem(blockEllements, block, noBlock);
+
+    ToggleClass(loginBtn, notlogin, hiddenClass, blockClass)
 
 }
 else{
-    const showElements = document.querySelectorAll(`.${active}`);
-    const noBlockEllements = document.querySelectorAll(`.${noBlock}`);
-    loginBtn.textContent ="Войти";
-    showHiddenElem(showElements, hidden, active);
-    showHiddenElem(noBlockEllements, block, noBlock);
+
+    ToggleClass(loginBtn, login, activeClass,noBlockClass)
 }
 
+}
+
+function ToggleClass(loginBtn, BtnText, clas, blockClass){
+    const Elements = document.querySelectorAll(`.${clas}`);
+    const BlockEllements = document.querySelectorAll(`.${blockClass}`);
+    loginBtn.textContent =BtnText;
+    showHiddenElem(Elements, hiddenClass, activeClass);
+    showHiddenElem(BlockEllements, blockClass, noBlockClass);
 }
 
 function showHiddenElem(elems, hiddenClass, activeClass){

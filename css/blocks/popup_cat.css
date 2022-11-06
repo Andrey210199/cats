@@ -1,14 +1,14 @@
-.popup-add-cat__content{
+.popup-cat__content{
     max-width: 600px; 
 }
 
-.popup-add-cat__form{
+.popup-cat__form{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
     gap: 10px;
 }
 
-.popup-add-cat__form-img{
+.popup-cat__form-img{
     display: flex;
     flex-direction: column;
 }

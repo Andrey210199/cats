@@ -1,8 +1,13 @@
+import { CLASSES } from "../constant.js";
+
+//Константы
+const {addPopupCatImage, addPopupActive, addPopupHidden} =CLASSES;
+
 export class Popup{
     constructor(selector, photo){
         this._popup = document.querySelector(`.${selector}`);
         this._escPopupClose = this._escPopupClose.bind(this);
-        this._img = this._popup.querySelector(".form__img");
+        this._img = this._popup.querySelector(`.${addPopupCatImage}`);
         this._pop = this._popup.querySelector("[name=img_link]");
         this._defPhoto = photo;
         
@@ -34,7 +39,7 @@ export class Popup{
     }
 
     openPopup(){
-        this._popup.classList.add("popup_active");
+        this._popup.classList.add(addPopupActive);
         this._event =document.addEventListener("keyup", this._escPopupClose);
         if(this._pop !==null)
         {
@@ -45,9 +50,9 @@ export class Popup{
     }
 
     closePopup(){
-        this._popup.classList.remove("popup_active");
-        this._popup.classList.add("popup_hidden");
-        setTimeout(()=>{this._popup.classList.remove("popup_hidden")},400);
+        this._popup.classList.remove(addPopupActive);
+        this._popup.classList.add(addPopupHidden);
+        setTimeout(()=>{this._popup.classList.remove(addPopupHidden)},400);
        document.removeEventListener("keyup",this._escPopupClose);
        document.removeEventListener("blur", this.blur);
     }

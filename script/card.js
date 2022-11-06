@@ -1,3 +1,9 @@
+import { CLASSES, BLOCKCLASS } from "./constant.js";
+import { getCookie } from "./Cookie.js";
+
+const {cardBtnFalse} = CLASSES;
+const {blockClass, noBlockClass} = BLOCKCLASS;
+
 export class Card{
     constructor(data,parent,template, selector){
         this._data = data;
@@ -7,6 +13,7 @@ export class Card{
         this._parent = document.querySelector(`.${parent}`);
         this._template = template;
         this._selector = selector;
+        this._isAuth = getCookie().email;
         
     }
 
@@ -14,19 +21,28 @@ export class Card{
       return  document.querySelector(`#${this._template}`).content.querySelector(`.${this._selector}`);
     }
 
+    _likeClass=(btn)=>{
+
+    }
     _dataCard(){
         this._card.querySelector("[class*=img]").src = this._img;
         this._card.querySelector("[class*=name").textContent = this._name;
         this._btn = this._card.querySelector("[class*=btn]");
         this._card.id = this._id;
+
         if(!this._data.favourite && this._btn!==null)
         {
-            this._btn.classList.add("card__btn_false");
+            this._btn.classList.add(cardBtnFalse);
         }
         else if(this._data.favourite && this._btn!==null)
         {
-            this._btn.classList.remove("card__btn_false");
+            this._btn.classList.remove(cardBtnFalse);
         }
+
+        if(this._isAuth){
+            this._btn.classList.remove(blockClass);
+        }
+
     }
 
     createCard(){

@@ -20,7 +20,7 @@
     flex:1;
 }
 
-.color{
+.color_green{
     background-color: var(--color-green);
     padding:20px 5px;
 }

@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Котики</title>
     <link rel="stylesheet" href="./css/index.css">
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" defer></script>
 </head>
 
 <body class="body">
 
     <header class="header">
-        <section class="content header__content space_content color">
+        <section class="content header__content space_content color_green">
             <a href="#" class="link header__link"><img class="header__img" src="https://pngimg.com/uploads/paw/paw_PNG3.png">
             Милые котики</a>
         <div class="header__content">
@@ -35,7 +34,7 @@
 
     <footer class="footer">
 
-        <section class="content footer__content space_content color">
+        <section class="content footer__content space_content color_green">
         <span class="text footer__text">©2022</span>
         <div class="footer__links">
         <a href="#" class="link footer__link">github</a>
@@ -45,7 +44,8 @@
         </section>
 
     </footer>
-
+    
+    <!--Шаблон карточки-->
     <template id="card__template">
 
             <div class="card content__card">
@@ -60,15 +60,15 @@
 
    <!--  Форма обновления кота -->
     <section class="popup popup-full-scrin popup-update-cat">
-        <div class="content popup-full-scrin__content popup-update-cat__content">
+        <div class="content popup-full-scrin__content popup-cat__content">
         <div class="popup__header">
         <h2>Питомец</h2>
         <button class="btn btn-close">x</button>
         
         </div>
             
-        <form class="form popup-update__form" id="form__update">
-            <div class="popup-update__form-img form__div">
+        <form class="form popup-cat__form" id="form__update">
+            <div class="popup__form-img form__div">
             <img src="" class="img form__img" alt="Фото кота">
             <input type="url" class="input no-event input__form" name="img_link" placeholder="Ссылка на фото" disabled>
             </div>
@@ -110,15 +110,15 @@
 
         <!--Форма добавления котика-->
         <section class="popup popup-full-scrin popup-add-cat">
-            <div class="content popup-full-scrin__content popup-add-cat__content">
+            <div class="content popup-full-scrin__content popup-cat__content">
             <div class="popup__header">
             <h2>Добавить питомца</h2>
             <button class="btn btn-close">x</button>
             
             </div>
                 
-            <form class="form popup-add-cat__form" id="form__add-cat">
-                <div class="popup-add-cat__form-img form__div">
+            <form class="form popup-cat__form" id="form__add-cat">
+                <div class="popup-cat__form-img form__div">
                 <img src="https://get.wallhere.com/photo/1920x1440-px-British-cat-shorthair-1912001.jpg" class="img form__img" alt="Фото кота">
                 <input type="url" class="input input__form" name="img_link" placeholder="Ссылка на фото">
                 </div>

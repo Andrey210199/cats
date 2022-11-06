@@ -10,4 +10,12 @@ export const SHOWCLASS ={hiddenClass: "btn_hidden", activeClass: "btn_active"};
 
 export const BLOCKCLASS ={blockClass: "btn_block", noBlockClass: "btn_noBlock"}
 
-export const STORAGELIFEMINUTES = 30;
+export const CLASSES ={cards: "cards", cardTemplate: "card__template" ,card: "card",
+ cardBtnFalse: "card__btn_false", noEvent: "no-event", cardName: "card__name", cardBtn: "card__btn",
+addPopupCatImage: "form__img", addPopupActive: "popup_active", addPopupHidden: "popup_hidden"};
+
+ export const AUTHORIZEDTEXTBTN ={login: "Войти", notlogin: "Выйти"};
+
+ export const COOKIELIFE = 300;
+
+ export const LOCALSTORAGE ={ elements: "cats", life: "catsTime", lifeTime: 30 }

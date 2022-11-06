@@ -5,11 +5,15 @@ import * as Card from "../card.js";
 import { updateLocalS } from "../local-storage.js";
 import { Api } from "./../api.js";
 
+//Константы
+const {card, cards, cardTemplate, noEvent} = Constant.CLASSES;
+const {NOPHOTO, CONFIG_API} = Constant;
+
 export class UpdatePopup extends Popup{
     constructor(selector, photo, formId){
         super(selector, photo);
 
-        this._api =  new Api(Constant.CONFIG_API);;
+        this._api =  new Api(CONFIG_API);;
         this._formId = this._popup.querySelector(`#${formId}`);
         this._input =this._popup.querySelector("input");
         this._id =this._formId.querySelector(".id");
@@ -22,7 +26,7 @@ export class UpdatePopup extends Popup{
 
     _inputClass()
     {
-        this._inputEvent =this._input.classList.contains("no-event");
+        this._inputEvent =this._input.classList.contains(noEvent);
 
         if(!this._inputEvent)
         {
@@ -50,12 +54,12 @@ export class UpdatePopup extends Popup{
     _editElem=()=>{
         this._element.forEach(elem=>{ 
             if(elem.type ==="checkbox"){
-                elem.parentNode.classList.toggle("no-event");
+                elem.parentNode.classList.toggle(noEvent);
                this._isDisabled(elem);
             }
             else if(elem.type !=="submit")
             {
-                elem.classList.toggle("no-event");
+                elem.classList.toggle(noEvent);
                 this._isDisabled(elem);
             }
 
@@ -63,13 +67,12 @@ export class UpdatePopup extends Popup{
     }
 
     _updateCard=()=>{
-         this._data = AddCat.addCat(this._element, Constant.NOPHOTO);
+         this._data = AddCat.addCat(this._element, NOPHOTO);
          this._data.id = this._id.textContent;
                
         this._api.updateCatById(this._data.id,this._data)
         .then(()=>{
-            this._card = new Card.Card(this._data,"cards","card__template", "card");
-            console.log(this._data)
+            this._card = new Card.Card(this._data, cards, cardTemplate, card);
             updateLocalS(this._data, "update");
             this._card.updateCard();
             this.closePopup();
@@ -80,15 +83,19 @@ export class UpdatePopup extends Popup{
         this._elemId = this._id.textContent;
         this._api.deleteCatById(this._elemId)
         .then(()=>{
-         this._card = document.querySelector(".cards").querySelector(`[id="${this._elemId}"]`)
+         this._card = document.querySelector(`.${cards}`).querySelector(`[id="${this._elemId}"]`)
          updateLocalS(this._elemId, "delete");
          this._card.remove();
          this.closePopup();
         });
     }
 
+    _Default= (event)=>{
+         event.preventDefault()
+    }
     openPopup(){
         super.openPopup();
+        this._formId.addEventListener("submit",this._Default)
         this._updateBtnEdit.addEventListener("click", this._editElem);
         this._updateBtnUpdate.addEventListener("click", this._updateCard);
         this._updateBtnDelete.addEventListener("click",this._deleteCard);
@@ -97,6 +104,7 @@ export class UpdatePopup extends Popup{
 
     closePopup(){
         super.closePopup();
+        document.removeEventListener("submit", this._Default);
         document.removeEventListener("click", this._editElem);
         document.removeEventListener("click", this._updateCard);
         document.removeEventListener("click", this._deleteCard);
