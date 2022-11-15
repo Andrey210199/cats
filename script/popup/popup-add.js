@@ -1,9 +1,9 @@
 import { Popup } from "./popup.js";
-import * as Constant from "../constant.js";
+import * as Constant from "../other/constant.js";
 import * as AddCat from "./addCat.js";
-import { updateLocalS } from "../local-storage.js";
+import { updateLocalS } from "../cache/local-storage.js";
 import { Api } from "../api.js";
-import { createCard } from "./../utilites.js";
+import { createCard } from "../other/utilites.js";
 
 //Константы
 const {NOPHOTO, CONFIG_API} = Constant;

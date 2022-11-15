@@ -1,6 +1,6 @@
-import * as Constant from "./constant.js";
-import { Api } from "./api.js";
-import { createCard } from "./utilites.js";
+import * as Constant from "../other/constant.js";
+import { Api } from "../api.js";
+import { createCard } from "../other/utilites.js";
 
 //Константы
 const {elements, life, lifeTime} = Constant.LOCALSTORAGE;

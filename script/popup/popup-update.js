@@ -1,8 +1,8 @@
 import { Popup } from "./popup.js";
-import * as Constant from "../constant.js";
+import * as Constant from "../other/constant.js";
 import * as AddCat from "./addCat.js";
 import * as Card from "../card.js";
-import { updateLocalS } from "../local-storage.js";
+import { updateLocalS } from "../cache/local-storage.js";
 import { Api } from "./../api.js";
 
 //Константы

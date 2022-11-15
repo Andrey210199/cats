@@ -1,5 +1,5 @@
-import * as Constant from "./constant.js";
-import { getCookie } from "./Cookie.js";
+import * as Constant from "./other/constant.js";
+import { getCookie } from "./cache/Cookie.js";
 
 //Константы
 const {hiddenClass,activeClass} = Constant.SHOWCLASS;
@@ -25,7 +25,6 @@ else{
 function ToggleClass(loginBtn, BtnText, clas, blockClas){
     const Elements = document.querySelectorAll(`.${clas}`);
     const BlockEllements = document.querySelectorAll(`.${blockClas}`);
-    console.log(BlockEllements)
     loginBtn.textContent =BtnText;
     showHiddenElem(Elements, hiddenClass, activeClass);
     showHiddenElem(BlockEllements, blockClass, noBlockClass);

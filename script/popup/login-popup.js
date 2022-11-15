@@ -1,6 +1,6 @@
 import { Popup } from "./popup.js";
 import { Authorized } from "../authorized.js";
-import { COOKIELIFE } from "../constant.js";
+import { COOKIELIFE } from "../other/constant.js";
 
 export class loginPopup extends Popup{
     constructor(selector, photo, formId, loginBtn){

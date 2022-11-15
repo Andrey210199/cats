@@ -1,5 +1,5 @@
-import { CLASSES, BLOCKCLASS } from "./constant.js";
-import { getCookie } from "./Cookie.js";
+import { CLASSES, BLOCKCLASS } from "./other/constant.js";
+import { getCookie } from "./cache/Cookie.js";
 
 const {cardBtnFalse} = CLASSES;
 const {blockClass, noBlockClass} = BLOCKCLASS;

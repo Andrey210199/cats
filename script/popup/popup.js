@@ -1,4 +1,4 @@
-import { CLASSES } from "../constant.js";
+import { CLASSES } from "../other/constant.js";
 
 //Константы
 const {addPopupCatImage, addPopupActive, addPopupHidden} =CLASSES;

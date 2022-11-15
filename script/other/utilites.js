@@ -1,4 +1,4 @@
-import * as Card from "./card.js";
+import * as Card from "../card.js";
 import {CLASSES} from "./constant.js";
 
 const {cards,cardTemplate, card: cardClass } = CLASSES;

@@ -1,12 +1,12 @@
 //Импорт файлов
-import * as Constant from "./constant.js";
+import * as Constant from "./other/constant.js";
 import { loginPopup } from "./popup/login-popup.js";
 import * as UpdatePopup from "./popup/popup-update.js";
 import { PopupAddCat } from "./popup/popup-add.js";
 import { Api } from "./api.js";
-import { getCookie } from "./Cookie.js";
+import { getCookie } from "./cache/Cookie.js";
 import { Authorized } from "./authorized.js";
-import { checkLStor, updateLocalS } from "./local-storage.js";
+import { checkLStor, updateLocalS } from "./cache/local-storage.js";
 
 //Константы
 const {DEFAULTPHOTO, CONFIG_API} =Constant;
